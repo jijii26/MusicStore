@@ -1,0 +1,61 @@
+﻿@using MusicStore.Models;
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Home/Index">Music Store</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="pull-right"><a href="/Utilisateur/Login">Login</a></li>
+                    <li class="pull-right"><a href="/Utilisateur/Create">Inscription</a></li>
+                    
+                }
+                else
+                {
+                    Depot depot = new Depot();
+                   
+                    <li class="pull-right"><a href="/Utilisateur/Edit">Modifier profil</a></li>
+                    <li class="pull-right"><a href="/Utilisateur/Logout">Sign out</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Genres
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @foreach (var item in depot.Genres.List())
+                            {
+                                <li><a href="/Musique/Index?GenreId=@item.GenreId">@item.Nom</a></li>
+                            }
+                        </ul>
+                    </li>
+
+                    <li><a href="/Panier">Panier</a></li>
+                    
+                    if (User.Identity.Name == "admin")
+                    {
+                        <li class="dropdown open">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
+                                Gestion
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Albums/Index">Gestion des Albums</a></li>
+                                <li><a href="/Genre/Index">Gestion des Genres</a></li>
+                            </ul>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+

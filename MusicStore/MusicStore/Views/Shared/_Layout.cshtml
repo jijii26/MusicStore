@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    @*vue partiel de la barre de navigation*@
+    @Html.Partial("NavBar")
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy;lincey Jérôme</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.slim.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.bootstrap.min.js"></script>
+</body>
+</html>
